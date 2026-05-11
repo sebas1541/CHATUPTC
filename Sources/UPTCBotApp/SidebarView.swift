@@ -2,8 +2,6 @@ import SwiftUI
 
 struct SidebarView: View {
     @Bindable var viewModel: ChatViewModel
-    let onHideSidebar: () -> Void
-
     @State private var search = ""
 
     private var filtered: [Conversation] {
@@ -14,13 +12,9 @@ struct SidebarView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            inlineHeader
-                .padding(.top, 14)
-                .padding(.horizontal, 12)
-                .padding(.bottom, 10)
-
             searchField
                 .padding(.horizontal, 12)
+                .padding(.top, 12)
                 .padding(.bottom, 14)
 
             sectionHeader
@@ -53,34 +47,21 @@ struct SidebarView: View {
 
             Spacer(minLength: 0)
         }
-        // Removemos el sidebar toggle del sistema porque tenemos uno propio inline
-        .toolbar(removing: .sidebarToggle)
-    }
-
-    // MARK: Inline gear + sidebar.left dentro del body
-
-    private var inlineHeader: some View {
-        HStack(spacing: 4) {
-            Spacer().frame(width: 56) // espacio para los traffic lights
-            Spacer()
-            inlineIcon("gearshape") { /* settings (no-op) */ }
-            inlineIcon("sidebar.left", action: onHideSidebar)
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    // settings (no-op por ahora)
+                } label: {
+                    Image(systemName: "gearshape")
+                        .font(.system(size: 17, weight: .regular))
+                        .foregroundStyle(.primary)
+                        .frame(width: 28, height: 28)
+                }
+                .buttonStyle(.plain)
+                .help("Configuración")
+            }
         }
-        .frame(height: 28)
     }
-
-    private func inlineIcon(_ symbol: String, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            Image(systemName: symbol)
-                .font(.system(size: 14, weight: .regular))
-                .foregroundStyle(.secondary)
-                .frame(width: 26, height: 26)
-                .contentShape(RoundedRectangle(cornerRadius: 6))
-        }
-        .buttonStyle(.plain)
-    }
-
-    // MARK: Search
 
     private var searchField: some View {
         HStack(spacing: 6) {

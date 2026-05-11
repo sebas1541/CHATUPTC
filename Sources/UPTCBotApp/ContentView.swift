@@ -9,20 +9,46 @@ struct ContentView: View {
         Group {
             if let viewModel {
                 NavigationSplitView(columnVisibility: $columnVisibility) {
-                    SidebarView(
-                        viewModel: viewModel,
-                        onHideSidebar: { columnVisibility = .detailOnly }
-                    )
-                    .navigationSplitViewColumnWidth(min: 240, ideal: 280, max: 360)
+                    SidebarView(viewModel: viewModel)
+                        .navigationSplitViewColumnWidth(min: 240, ideal: 280, max: 360)
                 } detail: {
-                    ChatDetailView(
-                        viewModel: viewModel,
-                        sidebarHidden: columnVisibility == .detailOnly,
-                        onShowSidebar: { columnVisibility = .all },
-                        onNewChat: viewModel.newChat
-                    )
+                    ChatDetailView(viewModel: viewModel)
                 }
                 .navigationSplitViewStyle(.balanced)
+                .toolbar(removing: .sidebarToggle)
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigation) {
+                        Button {
+                            // settings (no-op por ahora)
+                        } label: {
+                            iconLabel("gearshape")
+                        }
+                        .buttonStyle(.plain)
+                        .help("Configuración")
+
+                        Button {
+                            withAnimation(.spring(response: 0.35, dampingFraction: 0.85)) {
+                                columnVisibility = (columnVisibility == .detailOnly)
+                                    ? .all
+                                    : .detailOnly
+                            }
+                        } label: {
+                            iconLabel("sidebar.left")
+                        }
+                        .buttonStyle(.plain)
+                        .help("Mostrar/ocultar sidebar")
+                    }
+                    ToolbarItem(placement: .principal) {
+                        ModelPill()
+                    }
+                    ToolbarItem(placement: .primaryAction) {
+                        Button(action: viewModel.newChat) {
+                            iconLabel("square.and.pencil")
+                        }
+                        .buttonStyle(.plain)
+                        .help("Nuevo chat")
+                    }
+                }
             } else {
                 ProgressView()
             }
@@ -34,5 +60,32 @@ struct ContentView: View {
                 vm.loadModelIfNeeded()
             }
         }
+    }
+
+    @ViewBuilder
+    private func iconLabel(_ symbol: String) -> some View {
+        Image(systemName: symbol)
+            .font(.system(size: 17, weight: .regular))
+            .foregroundStyle(.primary)
+            .frame(width: 28, height: 28)
+    }
+}
+
+struct ModelPill: View {
+    var body: some View {
+        HStack(spacing: 4) {
+            Text("Fine-tuned Gemma UPTC")
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundStyle(.primary)
+            Image(systemName: "chevron.right")
+                .font(.system(size: 11, weight: .semibold))
+                .foregroundStyle(.secondary)
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 5)
+        .background(.regularMaterial, in: .capsule)
+        .overlay(
+            Capsule().stroke(Color.primary.opacity(0.06), lineWidth: 0.5)
+        )
     }
 }

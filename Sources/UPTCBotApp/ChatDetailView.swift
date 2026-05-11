@@ -2,9 +2,6 @@ import SwiftUI
 
 struct ChatDetailView: View {
     @Bindable var viewModel: ChatViewModel
-    let sidebarHidden: Bool
-    let onShowSidebar: () -> Void
-    let onNewChat: () -> Void
 
     @State private var input = ""
     @FocusState private var inputFocused: Bool
@@ -38,36 +35,6 @@ struct ChatDetailView: View {
             .padding(.top, 4)
         }
         .background(Color(nsColor: .textBackgroundColor))
-        .toolbar {
-            // Cuando el sidebar está oculto, mostramos gear + sidebar.left aquí
-            // para poder reabrir + acceder a settings.
-            if sidebarHidden {
-                ToolbarItem(placement: .navigation) {
-                    Button { /* settings (no-op) */ } label: {
-                        Image(systemName: "gearshape")
-                            .font(.system(size: 14))
-                    }
-                    .help("Configuración")
-                }
-                ToolbarItem(placement: .navigation) {
-                    Button(action: onShowSidebar) {
-                        Image(systemName: "sidebar.left")
-                            .font(.system(size: 14))
-                    }
-                    .help("Mostrar sidebar")
-                }
-            }
-            ToolbarItem(placement: .principal) {
-                ModelPill()
-            }
-            ToolbarItem(placement: .primaryAction) {
-                Button(action: onNewChat) {
-                    Image(systemName: "square.and.pencil")
-                        .font(.system(size: 14))
-                }
-                .help("Nuevo chat")
-            }
-        }
     }
 
     // MARK: Messages
@@ -151,24 +118,5 @@ struct ChatDetailView: View {
         let text = input
         input = ""
         viewModel.send(text)
-    }
-}
-
-private struct ModelPill: View {
-    var body: some View {
-        HStack(spacing: 4) {
-            Text("Fine-tuned Gemma UPTC")
-                .font(.system(size: 14, weight: .semibold))
-                .foregroundStyle(.primary)
-            Image(systemName: "chevron.right")
-                .font(.system(size: 11, weight: .semibold))
-                .foregroundStyle(.secondary)
-        }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 5)
-        .background(.regularMaterial, in: .capsule)
-        .overlay(
-            Capsule().stroke(Color.primary.opacity(0.06), lineWidth: 0.5)
-        )
     }
 }
