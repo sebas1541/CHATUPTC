@@ -40,7 +40,10 @@ let package = Package(
                 "UPTCBotKit",
                 .product(name: "MLXLMCommon", package: "mlx-swift-lm"),
             ],
-            path: "Sources/UPTCBotApp"
+            path: "Sources/UPTCBotApp",
+            resources: [
+                .copy("Resources/logouptc.png"),
+            ]
         ),
     ]
 )

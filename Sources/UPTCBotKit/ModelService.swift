@@ -1,6 +1,7 @@
 import CoreGraphics
 import Foundation
 import HuggingFace
+import MLX
 import MLXHuggingFace
 import MLXLMCommon
 import MLXVLM
@@ -19,7 +20,11 @@ public enum ModelService {
     /// La arquitectura `gemma4` (any-to-any) requiere el factory de VLM para
     /// soportar imágenes/audio además de texto.
     public static func loadContainer(modelDirectory: URL) async throws -> ModelContainer {
-        try await VLMModelFactory.shared.loadContainer(
+        // Limitar el cache de buffers Metal a ~2 GB para evitar OOM con
+        // contextos largos. Sin esto MLX retiene buffers grandes y un solo
+        // allocation puede superar el límite de 9.5 GB de un Metal buffer.
+        MLX.GPU.set(cacheLimit: 2 * 1024 * 1024 * 1024)
+        return try await VLMModelFactory.shared.loadContainer(
             from: modelDirectory,
             using: #huggingFaceTokenizerLoader()
         )

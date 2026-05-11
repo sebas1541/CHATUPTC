@@ -103,20 +103,8 @@ struct ChatDetailView: View {
 
     private var emptyState: some View {
         VStack(spacing: 18) {
-            ZStack {
-                Circle()
-                    .fill(
-                        LinearGradient(
-                            colors: [Color.accentColor.opacity(0.2), Color.accentColor.opacity(0.05)],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
-                    .frame(width: 80, height: 80)
-                Image(systemName: "sparkles")
-                    .font(.system(size: 36, weight: .light))
-                    .foregroundStyle(.tint)
-            }
+            UPTCLogo(size: 96)
+                .shadow(color: .black.opacity(0.1), radius: 12, y: 4)
 
             VStack(spacing: 6) {
                 Text("UPTCBot")
@@ -178,15 +166,19 @@ struct ChatDetailView: View {
     }
 
     private var loadingView: some View {
-        VStack(spacing: 14) {
+        VStack(spacing: 18) {
+            UPTCLogo(size: 72)
+                .shadow(color: .black.opacity(0.08), radius: 8, y: 3)
             ProgressView()
-                .controlSize(.regular)
-            Text("Cargando Fine-tuned Gemma UPTC…")
-                .font(.system(size: 13))
-                .foregroundStyle(.secondary)
-            Text("Mapeando 3.3 GB a memoria, ~10–30s la primera vez")
-                .font(.system(size: 11))
-                .foregroundStyle(.tertiary)
+                .controlSize(.small)
+            VStack(spacing: 4) {
+                Text("Cargando Fine-tuned Gemma UPTC…")
+                    .font(.system(size: 13, weight: .medium))
+                    .foregroundStyle(.secondary)
+                Text("Mapeando 3.3 GB a memoria, ~10–30s la primera vez")
+                    .font(.system(size: 11))
+                    .foregroundStyle(.tertiary)
+            }
         }
     }
 

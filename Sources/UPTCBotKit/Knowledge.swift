@@ -70,7 +70,9 @@ public enum Knowledge {
         lines.append("### \(string(p["programa"]))")
         lines.append("Facultad: \(string(p["facultad"]))")
         lines.append("Sede: \(string(p["sede"]))")
+        if let v = nonEmpty(p["titulo"]) { lines.append("Título: \(v)") }
         if let v = nonEmpty(p["duracion"]) { lines.append("Duración: \(v)") }
+        if let v = nonEmpty(p["creditos"]) { lines.append("Créditos académicos: \(v)") }
         if let v = nonEmpty(p["modalidad"]) { lines.append("Modalidad: \(v)") }
         if let v = nonEmpty(p["snies"]) { lines.append("SNIES: \(v)") }
         if let v = nonEmpty(p["perfil_profesional"]) { lines.append("Perfil profesional: \(v)") }
@@ -87,7 +89,9 @@ public enum Knowledge {
         if let arr = p["materias_clave"] as? [String], !arr.isEmpty {
             lines.append("Materias clave: \(arr.joined(separator: "; "))")
         }
-        if let v = nonEmpty(p["descripcion_extensa"]) { lines.append("Descripción: \(v)") }
+        // NOTA: descripcion_extensa se omite intencionalmente del system prompt
+        // para mantener el contexto bajo ~6k tokens. Los campos estructurados
+        // arriba ya cubren toda la información relevante sin duplicación.
         return lines.joined(separator: "\n")
     }
 
