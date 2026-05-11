@@ -1,0 +1,128 @@
+[
+  {
+    "id": "panorama_general",
+    "tipo": "panorama",
+    "tema": "Panorama general de la UPTC sede central Tunja",
+    "contenido": "La UPTC concentra en su sede central de Tunja las facultades de: Ciencias, Ciencias Agropecuarias, Ciencias de la Educación, Ciencias Económicas y Administrativas, Ciencias de la Salud, Derecho y Ciencias Sociales, Ingeniería, y Estudios a Distancia (FESAD, gestionada administrativamente desde Tunja pero con programas virtuales/distancia que pueden no estar en este catálogo). Según el Ministerio de Educación Nacional, la UPTC ofrece en total más de 50 programas de pregrado contando todas las sedes y modalidades. Esta base de conocimiento cubre 32 programas presenciales de la sede central Tunja según el anexo PILA 2024-1, que es la fuente oficial usada para la enumeración."
+  },
+  {
+    "id": "lista_oficial_programas",
+    "tipo": "lista",
+    "tema": "Programas de pregrado por facultad — Sede Central Tunja",
+    "contenido": "Facultad de Ciencias: Biología, Física, Matemáticas, Química. Facultad de Ciencias Agropecuarias: Ingeniería Agronómica, Medicina Veterinaria y Zootecnia. Facultad de Ciencias de la Educación: Licenciatura en Artes Plásticas, Licenciatura en Ciencias Naturales y Educación Ambiental, Licenciatura en Ciencias Sociales, Licenciatura en Educación Física Recreación y Deporte, Licenciatura en Filosofía, Licenciatura en Lenguas Modernas, Licenciatura en Lenguas Extranjeras, Licenciatura en Informática y Tecnología, Licenciatura en Música, Licenciatura en Educación Infantil, Licenciatura en Psicopedagogía, Licenciatura en Matemáticas. Facultad de Ciencias de la Salud: Enfermería, Medicina, Psicología. Facultad de Ciencias Económicas y Administrativas: Administración de Empresas, Economía, Contaduría Pública. Facultad de Derecho y Ciencias Sociales: Derecho. Facultad de Ingeniería: Ingeniería Ambiental, Ingeniería Civil, Ingeniería Electrónica, Ingeniería Metalúrgica, Ingeniería de Sistemas y Computación, Ingeniería de Transporte y Vías, Arquitectura."
+  },
+  {
+    "id": "comparativa_enfoques",
+    "tipo": "tabla_comparativa",
+    "tema": "Comparativa de programas por énfasis dominante",
+    "contenido": "Enfoque científico-experimental: Biología, Química (laboratorio + investigación), Física (matemático + experimental). Enfoque matemático máximo: Matemáticas (Facultad de Ciencias), Licenciatura en Matemáticas (con didáctica). Enfoque ingeniería aplicada con ciencias naturales: Ingeniería Agronómica, Ingeniería Ambiental, Medicina Veterinaria y Zootecnia. Enfoque salud clínica: Medicina (alta carga clínica), Enfermería (cuidado y comunitario). Enfoque salud mental y ciencias sociales: Psicología. Enfoque docencia + disciplina específica: todas las licenciaturas combinan pedagogía con su materia (artes, ciencias naturales, sociales, filosofía, idiomas, informática educativa, música, educación infantil, psicopedagogía, matemáticas, educación física). Enfoque gestión empresarial: Administración de Empresas (organización integral), Contaduría Pública (contabilidad/auditoría), Economía (análisis cuantitativo). Enfoque ciencias jurídicas: Derecho. Enfoque infraestructura: Ingeniería Civil (estructuras), Ingeniería de Transporte y Vías. Enfoque hardware/electrónica: Ingeniería Electrónica (instrumentación, control, comunicaciones), Ingeniería Metalúrgica (materiales). Enfoque software/computación: Ingeniería de Sistemas y Computación (programación + ingeniería de software + IA). Enfoque diseño espacial: Arquitectura (diseño + técnica constructiva)."
+  },
+  {
+    "id": "afinidad_ia_software",
+    "tipo": "clasificacion",
+    "tema": "Programas con afinidad para inteligencia artificial, programación y software",
+    "contenido": "Núcleo principal (muy alta afinidad): Ingeniería de Sistemas y Computación es el único programa de UPTC con currículo profesional fuerte en programación, bases de datos, ingeniería de software, comunicaciones y asignaturas selectivas en inteligencia artificial. Tiene una cadena matemática completa (cálculo I-IV, matemáticas discretas, probabilidad, investigación de operaciones) que sustenta machine learning y ciencia de datos. Afinidad media (TIC educativas): Licenciatura en Informática y Tecnología incluye fundamentos de informática, programación básica y uso pedagógico de TIC; útil si se quiere combinar IA con educación, pero menos profundo en desarrollo que Ingeniería de Sistemas. Bases teóricas complementarias: Matemáticas (Facultad de Ciencias) aporta optimización, probabilidad y estadística teórica que sustentan la IA; Economía aporta econometría y modelos cuantitativos aplicables a IA en finanzas; Física aporta modelado y simulación. Estos no son programas de software pero sirven de soporte para posgrados en ciencia de datos o IA aplicada."
+  },
+  {
+    "id": "afinidad_matematica",
+    "tipo": "clasificacion",
+    "tema": "Programas con mayor enfoque matemático",
+    "contenido": "Énfasis máximo: Matemáticas (Facultad de Ciencias) es el programa con la formación matemática más pura y completa, ideal para investigación o posgrados en matemáticas o áreas afines. Énfasis muy alto aplicado a computación: Ingeniería de Sistemas y Computación incluye cálculo I-IV, álgebra lineal, matemáticas discretas, probabilidad y estadística, métodos numéricos e investigación de operaciones. Énfasis alto aplicado a ingeniería: Ingeniería Civil (análisis estructural, mecánica de materiales, cálculo avanzado), Ingeniería Electrónica (señales, sistemas continuos y discretos), Ingeniería Metalúrgica, Ingeniería Ambiental, Ingeniería de Transporte y Vías. Énfasis cuantitativo en ciencias sociales: Economía es el programa de ciencias económicas con mayor exigencia matemática (econometría, optimización). Énfasis didáctico-matemático: Licenciatura en Matemáticas combina contenido matemático con didáctica de la matemática. Énfasis científico: Física (con fuerte soporte matemático), Química, Biología (matemática aplicada a modelado biológico)."
+  },
+  {
+    "id": "afinidad_gestion",
+    "tipo": "clasificacion",
+    "tema": "Programas más orientados a administración, gestión y negocios",
+    "contenido": "Núcleo administrativo-financiero: Administración de Empresas (gestión organizacional, finanzas, mercadeo, talento humano, estrategia), Contaduría Pública (contabilidad, auditoría, tributaria, control financiero), Economía (análisis macro/micro, políticas públicas, mercados, finanzas cuantitativas). Estos tres comparten núcleo común en administración básica, contabilidad, estadística y métodos cuantitativos; se diferencian por énfasis principal. Componentes secundarios de gestión: Derecho incluye administración pública y gestión de procesos jurídicos; Psicología organizacional tiene aplicaciones en gestión de talento humano; Ingeniería de Sistemas y Computación incluye gestión de proyectos informáticos."
+  },
+  {
+    "id": "afinidad_investigacion",
+    "tipo": "clasificacion",
+    "tema": "Programas con mayor orientación a investigación",
+    "contenido": "Ciencias básicas (ruta natural a investigación): Biología, Física, Matemáticas, Química. Son los programas más orientados a investigación científica básica y aplicada, con preparación para posgrados de maestría y doctorado. Ingeniería con investigación aplicada: Ingeniería de Sistemas y Computación (informática, IA, ciencia de datos), Ingeniería Ambiental (sostenibilidad, tratamiento), Ingeniería Civil (estructuras, hidráulica), Ingeniería Electrónica (instrumentación, telecomunicaciones), Ingeniería Metalúrgica (materiales). Investigación en educación: las licenciaturas más orientadas a investigación educativa son Licenciatura en Ciencias Naturales y Educación Ambiental, Licenciatura en Matemáticas y Licenciatura en Psicopedagogía. Investigación clínica y salud: Medicina, Psicología, Enfermería tienen componentes de investigación aplicada a la práctica clínica y comunitaria."
+  },
+  {
+    "id": "afinidad_hardware",
+    "tipo": "clasificacion",
+    "tema": "Programas con enfoque en electrónica, hardware y automatización",
+    "contenido": "Núcleo hardware-electrónica: Ingeniería Electrónica es el programa con foco directo en diseño de sistemas electrónicos, instrumentación, control, telecomunicaciones, automatización industrial y sistemas embebidos. Materiales (relacionado pero distinto): Ingeniería Metalúrgica trabaja con materiales metálicos y procesos de transformación, más enfocado en ciencia de materiales que en hardware electrónico. Complemento desde computación: Ingeniería de Sistemas y Computación incluye fundamentos de electrónica general y comunicaciones, pero su foco principal es software y no diseño de hardware. Para alguien interesado en sistemas embebidos o robótica, la combinación ideal sería estudiar Ingeniería Electrónica y profundizar luego en programación de bajo nivel."
+  },
+  {
+    "id": "similitudes_familias",
+    "tipo": "similitudes",
+    "tema": "Similitudes y diferencias entre familias de programas",
+    "contenido": "Familia ciencias básicas (Biología, Física, Matemáticas, Química): comparten metodología científica, trabajo de laboratorio (excepto Matemáticas) y fuerte formación teórica. Son base ideal para investigación científica y posgrados. Familia agropecuaria (Ingeniería Agronómica, Medicina Veterinaria y Zootecnia): enfocadas en sector agropecuario con intersección fuerte en biología, suelos, producción animal y sistemas productivos. Familia educación (12 licenciaturas): comparten núcleo pedagógico, didáctica, evaluación y práctica docente, diferenciándose por su disciplina específica. Familia salud (Enfermería, Medicina, Psicología): foco común en bienestar y atención a personas, con distintos niveles de intervención clínica, comunitaria y psicosocial. Familia económico-administrativa (Administración, Economía, Contaduría): núcleo común de administración, economía básica, contabilidad, estadística y métodos cuantitativos; se distinguen por énfasis. Familia ingenierías (Ambiental, Civil, Electrónica, Metalúrgica, Sistemas, Transporte y Vías): comparten cálculo, física, ciencias básicas, diseño de soluciones y trabajo por proyectos; se diferencian por tipo de sistema que abordan."
+  },
+  {
+    "id": "similitudes_sistemas_electronica",
+    "tipo": "similitudes",
+    "tema": "Comparación específica: Ingeniería de Sistemas vs Ingeniería Electrónica",
+    "contenido": "Ingeniería de Sistemas y Computación e Ingeniería Electrónica comparten algunas bases de electrónica, señales y comunicaciones, así como una fuerte cadena matemática. Sin embargo difieren claramente en el foco: Sistemas profundiza mucho más en software, desarrollo, algoritmos, bases de datos, ingeniería de software e inteligencia artificial; Electrónica enfatiza diseño de hardware, instrumentación, sistemas embebidos, control, telecomunicaciones y automatización industrial. Si alguien duda entre las dos: si le gusta más programar y diseñar sistemas a nivel lógico/software, va Sistemas; si le gusta más diseñar circuitos físicos, dispositivos electrónicos o trabajar con sensores/actuadores, va Electrónica. Ambas pueden converger en proyectos de IoT, robótica o sistemas ciberfísicos."
+  },
+  {
+    "id": "similitudes_sistemas_licenciatura_informatica",
+    "tipo": "similitudes",
+    "tema": "Comparación específica: Ingeniería de Sistemas vs Licenciatura en Informática y Tecnología",
+    "contenido": "Ingeniería de Sistemas y Computación y Licenciatura en Informática y Tecnología comparten el eje TIC y programación básica, pero su orientación es distinta: la licenciatura se centra en docencia, didáctica de la informática y diseño de ambientes de aprendizaje con tecnología; el programa de ingeniería se orienta a desarrollo profesional de software, ingeniería de software y soluciones tecnológicas a nivel industrial. Si la persona quiere ser docente y trabajar con tecnología en el aula, va la licenciatura. Si quiere desarrollar software profesionalmente, trabajar en empresas de TI o emprender en tecnología, va Ingeniería de Sistemas."
+  },
+  {
+    "id": "recomendacion_ia",
+    "tipo": "recomendacion",
+    "tema": "Recomendación para alguien interesado en inteligencia artificial",
+    "contenido": "Opción principal: Ingeniería de Sistemas y Computación. Es el programa con mejor equilibrio entre programación, matemáticas, estructuras de datos, bases de datos, comunicaciones e ingeniería de software, lo que lo hace ideal para profundizar luego en IA, machine learning y ciencia de datos. Opciones complementarias: Matemáticas (Facultad de Ciencias) si interesa el lado teórico — optimización, probabilidad y estadística que sustentan la IA. Economía si interesa IA aplicada a finanzas, economía computacional y modelos econométricos. Física si interesa modelado y simulación. Una ruta efectiva es estudiar Ingeniería de Sistemas y profundizar en IA con asignaturas selectivas, proyectos de grado y posgrado posterior."
+  },
+  {
+    "id": "recomendacion_programacion",
+    "tipo": "recomendacion",
+    "tema": "Recomendación para alguien interesado en programación y desarrollo de software",
+    "contenido": "Muy recomendado: Ingeniería de Sistemas y Computación tiene el núcleo más fuerte en programación, ingeniería de software, bases de datos y comunicaciones de toda la UPTC. Es la elección estándar para quien quiere ser desarrollador de software profesional. Relacionado pero con enfoque educativo: Licenciatura en Informática y Tecnología puede servir si la persona quiere combinar programación con docencia, diseño curricular o producción de recursos digitales educativos."
+  },
+  {
+    "id": "recomendacion_matematicas",
+    "tipo": "recomendacion",
+    "tema": "Recomendación para alguien interesado en matemáticas",
+    "contenido": "Matemáticas puras: Matemáticas (Facultad de Ciencias) ofrece formación sólida en teoría matemática, ideal para investigación o posgrados en matemáticas o áreas afines. Matemáticas con docencia: Licenciatura en Matemáticas combina contenido matemático con didáctica, evaluación y uso de recursos para la enseñanza. Matemática aplicada a otras disciplinas: Ingeniería Civil (análisis estructural), Ingeniería Ambiental, Ingeniería de Sistemas y Computación (matemática aplicada al modelado computacional), Economía (econometría y análisis cuantitativo). Para quien quiere matemáticas aplicadas a problemas reales, las ingenierías y la economía son rutas potentes."
+  },
+  {
+    "id": "recomendacion_gestion",
+    "tipo": "recomendacion",
+    "tema": "Recomendación para alguien interesado en gestión, administración y negocios",
+    "contenido": "Núcleo de programas administrativos: Administración de Empresas para gestión integral de organizaciones (estrategia, finanzas, mercadeo, talento humano, operaciones). Contaduría Pública si interesa contabilidad, auditoría, tributaria y normatividad financiera. Economía si interesa análisis económico, políticas públicas, mercados, finanzas cuantitativas o trabajo en sector público y banca. Los tres programas comparten núcleo común de administración, economía básica, contabilidad y estadística, y se diferencian principalmente por su énfasis principal."
+  },
+  {
+    "id": "recomendacion_electronica_hardware",
+    "tipo": "recomendacion",
+    "tema": "Recomendación para alguien interesado en electrónica, hardware y automatización",
+    "contenido": "Opción principal: Ingeniería Electrónica tiene foco directo en diseño de sistemas electrónicos, instrumentación, control, telecomunicaciones y automatización industrial. Complementos: Ingeniería de Sistemas y Computación aporta fundamentos en hardware y comunicaciones pero con foco en software. Ingeniería Metalúrgica si interesa más la parte de materiales y procesos que el hardware electrónico. Para sistemas embebidos o robótica, la base ideal es Ingeniería Electrónica."
+  },
+  {
+    "id": "recomendacion_investigacion",
+    "tipo": "recomendacion",
+    "tema": "Recomendación para alguien interesado en investigación científica",
+    "contenido": "Ciencias duras: Biología, Física, Matemáticas, Química son rutas naturales hacia investigación básica y aplicada en sus campos. Ingeniería con investigación aplicada: Ingeniería de Sistemas y Computación (informática, IA), Ingeniería Ambiental (sostenibilidad), Ingeniería Civil (estructuras), Ingeniería Electrónica (telecomunicaciones, instrumentación), Ingeniería Metalúrgica (materiales). Educación: Licenciaturas en Ciencias Naturales y Educación Ambiental, Matemáticas y Psicopedagogía son las más orientadas a investigación educativa, didáctica y currículo."
+  },
+  {
+    "id": "recomendacion_diseno_arte",
+    "tipo": "recomendacion",
+    "tema": "Recomendación para alguien interesado en diseño, arte y creatividad",
+    "contenido": "Licenciatura en Artes Plásticas: centrada en creación visual y formación docente en artes plásticas. Combina formación pedagógica con desarrollo artístico. Licenciatura en Música: para música, pedagogía musical, práctica instrumental/vocal y gestión de proyectos culturales. Arquitectura: mezcla de diseño espacial, creatividad y técnica constructiva, ideal para quien quiere diseñar espacios físicos y construcciones con componente estético y funcional."
+  },
+  {
+    "id": "recomendacion_salud",
+    "tipo": "recomendacion",
+    "tema": "Recomendación para alguien interesado en salud",
+    "contenido": "Práctica médica integral: Medicina forma médicos con competencias clínicas, científicas y humanas para diagnóstico, tratamiento, prevención y promoción de la salud. Cuidado y gestión: Enfermería se enfoca en cuidado del paciente, gestión del cuidado, salud comunitaria y atención clínica. Salud mental: Psicología tiene fuerte énfasis en salud mental, intervención psicológica, procesos cognitivos y emocionales, y trabajo en contextos clínicos, educativos, organizacionales y comunitarios."
+  },
+  {
+    "id": "recomendacion_docencia",
+    "tipo": "recomendacion",
+    "tema": "Recomendación para alguien interesado en docencia y educación",
+    "contenido": "Programas orientados 100% a docencia (todas las licenciaturas de la Facultad de Ciencias de la Educación): Artes Plásticas, Ciencias Naturales y Educación Ambiental, Ciencias Sociales, Educación Física Recreación y Deporte, Filosofía, Lenguas Modernas, Lenguas Extranjeras, Informática y Tecnología, Música, Educación Infantil, Psicopedagogía, Matemáticas. La elección dentro de las licenciaturas depende de qué disciplina específica quiere enseñar la persona. Docencia más tecnología: Licenciatura en Informática y Tecnología es especialmente interesante para quien quiere combinar enseñanza con TIC, programación básica y herramientas digitales. Docencia más ciencias: Licenciatura en Ciencias Naturales y Educación Ambiental para enseñar biología/química/física a nivel escolar con énfasis ambiental. Docencia más humanidades: Licenciatura en Filosofía o Licenciatura en Ciencias Sociales."
+  },
+  {
+    "id": "afinidad_agropecuaria",
+    "tipo": "clasificacion",
+    "tema": "Programas orientados al sector agropecuario y rural",
+    "contenido": "Ingeniería Agronómica: producción agrícola, manejo de cultivos, suelos, recursos naturales, desarrollo rural y sostenibilidad productiva. Medicina Veterinaria y Zootecnia: salud animal, producción pecuaria, manejo zootécnico, sector agropecuario regional y nacional. Estos dos programas tienen alta intersección y comparten base en biología, ciencias del suelo, sistemas productivos y conocimiento del medio rural; se diferencian en que Agronómica se enfoca en cultivos y vegetales, mientras Veterinaria se enfoca en animales (salud y producción). Complementos relacionados: Ingeniería Ambiental para alguien interesado en sostenibilidad del sector rural."
+  }
+]

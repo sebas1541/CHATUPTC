@@ -1,0 +1,10 @@
+.build/
+.build-xcode/
+.swiftpm/
+.DS_Store
+Package.resolved
+*.xcodeproj/xcuserdata
+
+# Modelo Gemma 4 (~3.6 GB). Demasiado grande para git sin LFS.
+# Para re-descargar: bash scripts/download_model.sh
+Model/
