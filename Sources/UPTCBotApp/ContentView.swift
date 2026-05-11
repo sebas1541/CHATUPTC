@@ -15,29 +15,7 @@ struct ContentView: View {
                     ChatDetailView(viewModel: viewModel)
                 }
                 .navigationSplitViewStyle(.balanced)
-                .toolbar(removing: .sidebarToggle)
                 .toolbar {
-                    ToolbarItemGroup(placement: .navigation) {
-                        Button {
-                            // settings (no-op por ahora)
-                        } label: {
-                            iconLabel("gearshape")
-                        }
-                        .buttonStyle(.plain)
-                        .help("Configuración")
-
-                        Button {
-                            withAnimation(.spring(response: 0.35, dampingFraction: 0.85)) {
-                                columnVisibility = (columnVisibility == .detailOnly)
-                                    ? .all
-                                    : .detailOnly
-                            }
-                        } label: {
-                            iconLabel("sidebar.left")
-                        }
-                        .buttonStyle(.plain)
-                        .help("Mostrar/ocultar sidebar")
-                    }
                     ToolbarItem(placement: .principal) {
                         ModelPill()
                     }

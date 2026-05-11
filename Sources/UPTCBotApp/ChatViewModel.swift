@@ -8,6 +8,7 @@ struct ChatMessage: Identifiable, Codable, Equatable, Hashable {
     var id: UUID = UUID()
     let role: Role
     var text: String
+    var imagePaths: [String] = []
 }
 
 @MainActor
@@ -23,6 +24,8 @@ final class ChatViewModel {
     let store: ConversationStore
     var modelState: ModelState = .idle
     var isGenerating = false
+    /// Imagen adjunta pendiente de enviar (seleccionada en el + del composer).
+    var pendingAttachment: URL?
 
     private var container: ModelContainer?
     private var session: ChatSession?
@@ -57,11 +60,20 @@ final class ChatViewModel {
 
     func send(_ text: String) {
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty, let session, !isGenerating else { return }
+        guard !trimmed.isEmpty || pendingAttachment != nil,
+              let session, !isGenerating else { return }
 
-        store.appendUserMessage(trimmed)
+        // Capturar y limpiar la imagen adjunta para esta turno
+        let attachment = pendingAttachment
+        pendingAttachment = nil
+
+        let imagePaths = attachment.map { [$0.path] } ?? []
+        store.appendUserMessage(trimmed, imagePaths: imagePaths)
         store.startAssistantMessage()
         isGenerating = true
+
+        let prompt = trimmed.isEmpty ? "Describe esta imagen." : trimmed
+        let imageInput: UserInput.Image? = attachment.map { .url($0) }
 
         generationTask = Task { [weak self] in
             guard let self else { return }
@@ -70,7 +82,8 @@ final class ChatViewModel {
                 self.store.save()
             }
             do {
-                for try await chunk in session.streamResponse(to: trimmed) {
+                let stream = session.streamResponse(to: prompt, image: imageInput)
+                for try await chunk in stream {
                     if Task.isCancelled { break }
                     self.store.appendChunkToLastAssistantMessage(chunk)
                 }
@@ -78,6 +91,14 @@ final class ChatViewModel {
                 self.store.appendChunkToLastAssistantMessage("\n\n[Error: \(error)]")
             }
         }
+    }
+
+    func attachImage(_ url: URL) {
+        pendingAttachment = url
+    }
+
+    func clearAttachment() {
+        pendingAttachment = nil
     }
 
     func stopGeneration() {

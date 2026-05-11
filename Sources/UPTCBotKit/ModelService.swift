@@ -1,8 +1,9 @@
+import CoreGraphics
 import Foundation
 import HuggingFace
 import MLXHuggingFace
-import MLXLLM
 import MLXLMCommon
+import MLXVLM
 import Tokenizers
 
 public enum ModelService {
@@ -14,8 +15,11 @@ public enum ModelService {
             .appendingPathComponent("Model")
     }
 
+    /// Carga el modelo Gemma 4 multimodal vía VLMModelFactory.
+    /// La arquitectura `gemma4` (any-to-any) requiere el factory de VLM para
+    /// soportar imágenes/audio además de texto.
     public static func loadContainer(modelDirectory: URL) async throws -> ModelContainer {
-        try await loadModelContainer(
+        try await VLMModelFactory.shared.loadContainer(
             from: modelDirectory,
             using: #huggingFaceTokenizerLoader()
         )
@@ -29,7 +33,8 @@ public enum ModelService {
         return ChatSession(
             container,
             instructions: instructions,
-            generateParameters: GenerateParameters(temperature: temperature)
+            generateParameters: GenerateParameters(temperature: temperature),
+            processing: UserInput.Processing(resize: CGSize(width: 768, height: 768))
         )
     }
 }

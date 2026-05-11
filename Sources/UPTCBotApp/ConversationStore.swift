@@ -67,9 +67,11 @@ final class ConversationStore {
         save()
     }
 
-    func appendUserMessage(_ text: String) {
+    func appendUserMessage(_ text: String, imagePaths: [String] = []) {
         guard let idx = selectedIndex else { return }
-        conversations[idx].messages.append(ChatMessage(role: .user, text: text))
+        conversations[idx].messages.append(
+            ChatMessage(role: .user, text: text, imagePaths: imagePaths)
+        )
         conversations[idx].updatedAt = Date()
         if conversations[idx].title == "New chat" {
             let preview = text.prefix(40).trimmingCharacters(in: .whitespaces)
