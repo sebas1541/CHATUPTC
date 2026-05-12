@@ -164,17 +164,75 @@ Prompt interactivo en terminal. Útil para debugging.
 
 ## Distribución (DMG)
 
+### Generar el DMG
+
 ```bash
-bash scripts/build_app.sh                  # arma dist/UPTCBot.app
-# luego con create-dmg → ~/Desktop/UPTCBot.dmg
+bash scripts/build_app.sh                  # arma dist/UPTCBot.app (~3.5 GB)
+# luego, con create-dmg:
+create-dmg --volname "UPTCBot" \
+           --volicon build/AppIcon.icns \
+           --background build/dmg-background.png \
+           --window-pos 200 120 --window-size 660 420 \
+           --icon-size 96 \
+           --icon "UPTCBot.app" 165 220 \
+           --hide-extension "UPTCBot.app" \
+           --app-drop-link 495 220 \
+           /tmp/UPTCBot.dmg dist/
+mv /tmp/UPTCBot.dmg ~/Desktop/UPTCBot.dmg
 ```
 
-El DMG resultante tiene un fondo custom con la flecha hacia Applications,
-ícono del cóndor como volumen, y queda en ~2.6 GB comprimido.
+El DMG resultante tiene un fondo custom con flecha hacia Applications, ícono
+del cóndor como volumen, y queda en ~2.6 GB comprimido.
 
-> El `.app` no está firmado con Developer ID Apple. La primera vez que
-> alguien lo abra, macOS Gatekeeper le mostrará un warning. Workaround:
-> click derecho → Open, o `xattr -dr com.apple.quarantine /Applications/UPTCBot.app`.
+> Nota técnica: `create-dmg` no puede escribir directo a `~/Desktop` por
+> permisos sandbox de macOS — créalo en `/tmp/` y muévelo con `mv`.
+
+### Cómo instalar UPTCBot (instrucciones para el usuario final)
+
+1. **Abre** `UPTCBot.dmg` haciendo doble click.
+2. **Arrastra** `UPTCBot.app` hacia la carpeta `Applications` en la ventana
+   del DMG.
+3. **Cierra** el DMG (no dejes el `.app` en el DMG montado, ejecútalo desde
+   `/Applications`).
+
+### Primera apertura — bypass de Gatekeeper
+
+Como esta app **no está firmada con Apple Developer ID** (cuesta $99/año),
+la primera vez que la abras macOS bloqueará la ejecución:
+
+> *"UPTCBot" cannot be opened because Apple cannot check it for malicious
+> software. macOS cannot verify that this app is free from malware.*
+>
+> [ Move to Trash ] [ Done ]
+
+**NO pulses "Move to Trash".** Pulsa "Done" y sigue estos pasos:
+
+1. **Abre System Settings** (icono del engranaje en el Dock o en
+   `/Applications`).
+2. Ve a **Privacy & Security** en la barra lateral izquierda.
+3. **Baja hasta la sección "Security"** (al final, antes de "Advanced").
+4. Verás un mensaje:
+   > *"UPTCBot.app" was blocked from use because it is not from an identified
+   > developer.*
+5. Click en **"Open Anyway"** al lado derecho de ese mensaje.
+6. macOS te volverá a pedir confirmación → click **"Open Anyway"** otra vez.
+7. Ingresa tu **contraseña / Touch ID** si lo pide.
+
+La app se abrirá y empezará a cargar el modelo (~10–30s la primera vez).
+Después de este primer permiso, las siguientes aperturas son normales con
+doble click.
+
+#### Alternativa rápida (Terminal)
+
+Si prefieres saltarte los menús, una sola línea desde Terminal hace lo
+mismo:
+
+```bash
+xattr -dr com.apple.quarantine /Applications/UPTCBot.app
+```
+
+Esto quita el atributo de cuarentena que macOS asigna a apps descargadas, y
+después puedes abrirla con doble click normal sin warnings.
 
 ---
 

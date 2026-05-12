@@ -1,0 +1,117 @@
+# URLs de los micrositios oficiales de cada programa de pregrado UPTC sede Tunja.
+# Solo Ing. Sistemas tiene URL conocida y verificada. Las demás están como
+# placeholders — UPTC no expone un sitemap accesible y las facultades cargan
+# los listados via JS, así que hay que descubrirlas manualmente navegando
+# uptc.edu.co/facultades.
+#
+# Para llenar una URL faltante:
+#   1. Ir a uptc.edu.co y buscar el programa
+#   2. Copiar la URL del micrositio del programa (que termina en /index.html)
+#   3. Pegarla acá y correr `python3 scrape_uptc.py`
+#
+# Los programas con `url: null` se omiten del scraping pero NO se borran del
+# JSON existente (sus campos se conservan).
+
+programs:
+  # === Facultad de Ingeniería ===
+  - nombre: "Ingeniería de Sistemas y Computación"
+    url: "https://www.uptc.edu.co/sitio/portal/sitios/universidad/vic_aca/facultades/fac_inge/preg/ing_2760_t/index.html"
+
+  - nombre: "Ingeniería Ambiental"
+    url: null  # TODO: encontrar URL
+
+  - nombre: "Ingeniería Civil"
+    url: null
+
+  - nombre: "Ingeniería Electrónica"
+    url: null
+
+  - nombre: "Ingeniería Metalúrgica"
+    url: null
+
+  - nombre: "Ingeniería de Transporte y Vías"
+    url: null
+
+  - nombre: "Arquitectura"
+    url: null
+
+  # === Facultad de Ciencias ===
+  - nombre: "Biología"
+    url: null
+
+  - nombre: "Física"
+    url: null
+
+  - nombre: "Matemáticas"
+    url: null
+
+  - nombre: "Química"
+    url: null
+
+  # === Facultad de Ciencias Agropecuarias ===
+  - nombre: "Ingeniería Agronómica"
+    url: null
+
+  - nombre: "Medicina Veterinaria y Zootecnia"
+    url: null
+
+  # === Facultad de Ciencias de la Educación ===
+  - nombre: "Licenciatura en Artes Plásticas"
+    url: null
+
+  - nombre: "Licenciatura en Ciencias Naturales y Educación Ambiental"
+    url: null
+
+  - nombre: "Licenciatura en Ciencias Sociales"
+    url: null
+
+  - nombre: "Licenciatura en Educación Física, Recreación y Deporte"
+    url: null
+
+  - nombre: "Licenciatura en Filosofía"
+    url: null
+
+  - nombre: "Licenciatura en Lenguas Modernas"
+    url: null
+
+  - nombre: "Licenciatura en Lenguas Extranjeras"
+    url: null
+
+  - nombre: "Licenciatura en Informática y Tecnología"
+    url: null
+
+  - nombre: "Licenciatura en Música"
+    url: null
+
+  - nombre: "Licenciatura en Educación Infantil"
+    url: null
+
+  - nombre: "Licenciatura en Psicopedagogía"
+    url: null
+
+  - nombre: "Licenciatura en Matemáticas"
+    url: null
+
+  # === Facultad de Ciencias de la Salud ===
+  - nombre: "Enfermería"
+    url: null
+
+  - nombre: "Medicina"
+    url: null
+
+  - nombre: "Psicología"
+    url: null
+
+  # === Facultad de Ciencias Económicas y Administrativas ===
+  - nombre: "Administración de Empresas"
+    url: null
+
+  - nombre: "Economía"
+    url: null
+
+  - nombre: "Contaduría Pública"
+    url: null
+
+  # === Facultad de Derecho y Ciencias Sociales ===
+  - nombre: "Derecho"
+    url: null
