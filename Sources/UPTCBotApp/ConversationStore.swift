@@ -64,6 +64,12 @@ final class ConversationStore {
         if selectedID == id {
             selectedID = conversations.first?.id
         }
+        // Si te quedaste sin chats, crear uno vacío automáticamente —
+        // si no, el composer se queda en el aire y los mensajes se pierden.
+        if conversations.isEmpty {
+            newConversation()
+            return
+        }
         save()
     }
 

@@ -32,11 +32,19 @@ rm -rf "$APP_DIR"
 mkdir -p "$APP_DIR/Contents/MacOS"
 mkdir -p "$APP_DIR/Contents/Resources"
 
-echo "==> [3/6] Copiando binario y resource bundles..."
-cp "$BUILD_DIR/$SCHEME" "$APP_DIR/Contents/MacOS/${APP_NAME}_bin"
+echo "==> [3/6] Copiando binario (MacOS/) y resource bundles (Resources/)..."
+# El binario va directo como UPTCBot (CFBundleExecutable). No usamos wrapper
+# bash porque macOS Launch Services no maneja bien shell scripts como
+# entry point de un .app.
+cp "$BUILD_DIR/$SCHEME" "$APP_DIR/Contents/MacOS/${APP_NAME}"
+chmod +x "$APP_DIR/Contents/MacOS/${APP_NAME}"
+# Los bundles van a Resources/, NO a MacOS/ — SwiftPM resource accessor
+# busca en Bundle.main.resourceURL (= Contents/Resources/) cuando el
+# binario corre dentro de un .app. Si los pones en MacOS/, MLX no
+# encuentra default.metallib y la app se cierra al arrancar.
 for bundle in "$BUILD_DIR"/*.bundle; do
     [[ -e "$bundle" ]] || continue
-    cp -R "$bundle" "$APP_DIR/Contents/MacOS/"
+    cp -R "$bundle" "$APP_DIR/Contents/Resources/"
 done
 
 echo "==> [4/6] Hardlinking Model/ (sin duplicar 3.4 GB)..."
@@ -81,15 +89,9 @@ cat > "$APP_DIR/Contents/Info.plist" <<PLIST
 </plist>
 PLIST
 
-echo "==> [6/6] Wrapper para apuntar UPTC_MODEL_PATH..."
-cat > "$APP_DIR/Contents/MacOS/$APP_NAME" <<'WRAPPER'
-#!/bin/bash
-DIR="$(cd "$(dirname "$0")" && pwd)"
-export UPTC_MODEL_PATH="$DIR/../Resources/Model"
-exec "$DIR/UPTCBot_bin" "$@"
-WRAPPER
-chmod +x "$APP_DIR/Contents/MacOS/$APP_NAME"
-
+echo "==> [6/6] Finalizando..."
+# Ya no hay wrapper bash. ModelService.resolveModelDirectory() auto-detecta
+# Model/ desde Bundle.main.resourceURL cuando corre dentro del .app.
 touch "$APP_DIR"
 
 echo ""

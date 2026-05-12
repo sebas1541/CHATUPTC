@@ -24,11 +24,12 @@ final class ChatViewModel {
     let store: ConversationStore
     var modelState: ModelState = .idle
     var isGenerating = false
-    /// Imagen adjunta pendiente de enviar (seleccionada en el + del composer).
+    /// Reservado para futura reintroducción de imágenes — hoy no se usa
+    /// porque cargamos vía MLXLLM (text-only) para reducir RAM.
     var pendingAttachment: URL?
 
     private var container: ModelContainer?
-    private var session: ChatSession?
+    private let embedder = EmbeddingService()
     private var loadTask: Task<Void, Never>?
     private var generationTask: Task<Void, Never>?
 
@@ -48,9 +49,18 @@ final class ChatViewModel {
             do {
                 let dir = ModelService.resolveModelDirectory()
                 let c = try await ModelService.loadContainer(modelDirectory: dir)
-                let s = try ModelService.makeChatSession(container: c)
                 self.container = c
-                self.session = s
+
+                // Cargar embedder e indexar 54 docs. Si falla, seguimos
+                // con un fallback de stuffing reducido (sin RAG).
+                do {
+                    try await self.embedder.initialize()
+                } catch {
+                    // No abortar la app si el embedder falla — el LLM
+                    // puede operar con un prompt genérico.
+                    print("⚠️ Embedder no disponible: \(error). Continuando sin RAG.")
+                }
+
                 self.modelState = .ready
             } catch {
                 self.modelState = .failed(String(describing: error))
@@ -60,29 +70,45 @@ final class ChatViewModel {
 
     func send(_ text: String) {
         let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty || pendingAttachment != nil,
-              let session, !isGenerating else { return }
+        guard !trimmed.isEmpty, let container, !isGenerating else { return }
 
-        // Capturar y limpiar la imagen adjunta para esta turno
-        let attachment = pendingAttachment
-        pendingAttachment = nil
+        // Red de seguridad: garantizar conversación activa.
+        if store.selectedConversation == nil {
+            store.newConversation()
+        }
 
-        let imagePaths = attachment.map { [$0.path] } ?? []
-        store.appendUserMessage(trimmed, imagePaths: imagePaths)
+        store.appendUserMessage(trimmed)
         store.startAssistantMessage()
         isGenerating = true
 
-        let prompt = trimmed.isEmpty ? "Describe esta imagen." : trimmed
-        let imageInput: UserInput.Image? = attachment.map { .url($0) }
-
-        generationTask = Task { [weak self] in
+        generationTask = Task { [weak self, embedder] in
             guard let self else { return }
             defer {
                 self.isGenerating = false
                 self.store.save()
             }
+
             do {
-                let stream = session.streamResponse(to: prompt, image: imageInput)
+                // 1. Retrieval: obtener top-5 docs relevantes para esta query.
+                let docs: [KnowledgeDoc]
+                if await embedder.isReady {
+                    docs = (try? await embedder.retrieve(query: trimmed, topK: 5)) ?? []
+                } else {
+                    docs = []
+                }
+
+                // 2. Construir system prompt dinámico con solo esos docs.
+                let instructions = Knowledge.systemPrompt(usingDocs: docs)
+
+                // 3. Sesión nueva por turno: sin KV cache acumulada de turnos
+                //    anteriores → memoria sostenida bajo control.
+                let session = ModelService.makeChatSession(
+                    container: container,
+                    instructions: instructions
+                )
+
+                // 4. Stream de respuesta.
+                let stream = session.streamResponse(to: trimmed)
                 for try await chunk in stream {
                     if Task.isCancelled { break }
                     self.store.appendChunkToLastAssistantMessage(chunk)
@@ -93,38 +119,26 @@ final class ChatViewModel {
         }
     }
 
-    func attachImage(_ url: URL) {
-        pendingAttachment = url
-    }
-
-    func clearAttachment() {
-        pendingAttachment = nil
-    }
-
     func stopGeneration() {
         generationTask?.cancel()
         isGenerating = false
         store.save()
     }
 
-    /// Crea una nueva conversación vacía y reinicia la sesión MLX (sin KV cache previa).
     func newChat() {
         stopGeneration()
         store.newConversation()
-        if let container {
-            session = try? ModelService.makeChatSession(container: container)
-        }
     }
 
-    /// Cambia la conversación activa. La sesión MLX se recrea — el modelo no recuerda
-    /// turnos previos al cambio, pero el usuario sí ve el historial visualmente.
     func selectConversation(_ id: UUID) {
         stopGeneration()
         store.selectedID = id
-        if let container {
-            session = try? ModelService.makeChatSession(container: container)
-        }
     }
+
+    // Stubs para compatibilidad con UI viejo (drag&drop, attach). No-op
+    // mientras estemos en MLXLLM text-only.
+    func attachImage(_ url: URL) {}
+    func clearAttachment() {}
 }
 
 extension ChatViewModel.ModelState: Equatable {
