@@ -291,3 +291,31 @@ después puedes abrirla con doble click normal sin warnings.
 
 Asistente **NO oficial**. La información puede tener errores. Verifica
 siempre los datos sensibles en [uptc.edu.co](https://www.uptc.edu.co).
+
+---
+
+## Autores
+
+**Sebastián Cañón Castellanos**
+Universidad Pedagógica y Tecnológica de Colombia
+Tunja, Colombia
+Código: 202127352
+sebastian.canon26@uptc.edu.co
+
+**Kevin Johann Jiménez Poveda**
+Universidad Pedagógica y Tecnológica de Colombia
+Tunja, Colombia
+Código: 202220120
+kevin.jimenez03@uptc.edu.co
+
+**William Alejandro González Gómez**
+Universidad Pedagógica y Tecnológica de Colombia
+Tunja, Colombia
+Código: 202213375
+william.gonzalez05@uptc.edu.co
+
+**Pedro Eduardo Cruz López**
+Universidad Pedagógica y Tecnológica de Colombia
+Tunja, Colombia
+Código: 202128778
+pedro.cruz02@uptc.edu.co
