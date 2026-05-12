@@ -16,6 +16,26 @@ Sin internet, sin nube, sin que tus consultas salgan del Mac.
 
 ---
 
+# ⚠️ REQUISITO CRÍTICO: SOLO MACOS 26 (TAHOE) ⚠️
+
+> # 🚨 ESTA APP **SOLO** FUNCIONA EN **macOS 26 (TAHOE)** 🚨
+>
+> ## ❌ **NO FUNCIONA EN macOS 15 (SEQUOIA)**
+> ## ❌ **NO FUNCIONA EN macOS 14 (SONOMA)**
+> ## ❌ **NO FUNCIONA EN VERSIONES ANTERIORES**
+>
+> ### ✅ **REQUIERE macOS 26 O SUPERIOR — SIN EXCEPCIONES**
+>
+> La app usa APIs exclusivas de **macOS 26 Tahoe** (Liquid Glass, SwiftUI 6,
+> nuevos APIs de `NavigationSplitView`, toolbar moderno) y **NO ARRANCA** en
+> versiones anteriores. Si intentas abrirla en macOS 15 o menor, **se cerrará
+> sin mostrar nada** o macOS te dirá que la app es incompatible.
+>
+> **Verifica tu versión antes de descargar:**
+>  > Menú Apple () → "Acerca de este Mac" → debe decir **macOS 26** o superior.
+
+---
+
 ## Stack
 
 | Capa | Tecnología |
@@ -85,8 +105,8 @@ Más detalle en [`dataset/README.md`](dataset/README.md).
 ### Requisitos
 
 - Mac con Apple Silicon (M1+)
-- macOS 14 Sonoma o superior
-- Xcode 16+ con Metal Toolchain
+- **macOS 26 (Tahoe) — OBLIGATORIO. No funciona en versiones anteriores.**
+- Xcode 26+ con Metal Toolchain
 - ~4 GB libres en disco para los pesos del modelo
 
 ### Setup (primera vez)
