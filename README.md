@@ -14,6 +14,20 @@ Sin internet, sin nube, sin que tus consultas salgan del Mac.
   <img src="Sources/UPTCBotApp/Resources/logouptc.png" width="160" alt="UPTCBot logo">
 </p>
 
+## Capturas de la interfaz
+
+<p align="center">
+  <img src="docs/screenshots/ui-chat-1.png" width="800" alt="UPTCBot — vista de chat">
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/ui-chat-2.png" width="800" alt="UPTCBot — vista de chat con respuesta">
+</p>
+
+UI nativa SwiftUI con Liquid Glass de macOS 26: sidebar de conversaciones
+persistentes, burbujas estilo ChatGPT, streaming token a token, e indicador
+del modelo activo ("Fine-tuned Gemma UPTC") en el toolbar.
+
 ---
 
 # ⚠️ REQUISITO CRÍTICO: SOLO MACOS 26 (TAHOE) ⚠️
